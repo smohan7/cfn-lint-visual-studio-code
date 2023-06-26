@@ -1,6 +1,7 @@
 {
   "typeName": "AWS::AmplifyUIBuilder::Form",
   "description": "Definition of AWS::AmplifyUIBuilder::Form Resource Type",
+  "sourceUrl": "https://github.com/aws-cloudformation/aws-cloudformation-resource-providers-amplifyuibuilder",
   "definitions": {
     "FieldConfig": {
       "type": "object",
@@ -91,6 +92,9 @@
         "IsArray": {
           "type": "boolean",
           "markdownDescription": "\n\n---\n\nRequired: No  \nType: Boolean  \nUpdate requires: No interruption"
+        },
+        "FileUploaderConfig": {
+          "$ref": "#/definitions/FileUploaderFieldConfig"
         }
       },
       "required": [
@@ -183,6 +187,44 @@
           "$ref": "#/definitions/FieldConfig"
         }
       },
+      "additionalProperties": false,
+      "markdownDescription": "\n\n---\n\nRequired: No  \nUpdate requires: No interruption"
+    },
+    "FileUploaderFieldConfig": {
+      "type": "object",
+      "properties": {
+        "AccessLevel": {
+          "$ref": "#/definitions/StorageAccessLevel"
+        },
+        "AcceptedFileTypes": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "markdownDescription": "\n\n---\n\nRequired: No  \nType: String  \nUpdate requires: No interruption"
+          },
+          "markdownDescription": "\n\n---\n\nRequired: Yes  \nType: Array  \nUpdate requires: No interruption"
+        },
+        "ShowThumbnails": {
+          "type": "boolean",
+          "markdownDescription": "\n\n---\n\nRequired: No  \nType: Boolean  \nUpdate requires: No interruption"
+        },
+        "IsResumable": {
+          "type": "boolean",
+          "markdownDescription": "\n\n---\n\nRequired: No  \nType: Boolean  \nUpdate requires: No interruption"
+        },
+        "MaxFileCount": {
+          "type": "number",
+          "markdownDescription": "\n\n---\n\nRequired: No  \nType: Number  \nUpdate requires: No interruption"
+        },
+        "MaxSize": {
+          "type": "number",
+          "markdownDescription": "\n\n---\n\nRequired: No  \nType: Number  \nUpdate requires: No interruption"
+        }
+      },
+      "required": [
+        "AcceptedFileTypes",
+        "AccessLevel"
+      ],
       "additionalProperties": false,
       "markdownDescription": "\n\n---\n\nRequired: No  \nUpdate requires: No interruption"
     },
@@ -330,6 +372,15 @@
         }
       ]
     },
+    "LabelDecorator": {
+      "type": "string",
+      "enum": [
+        "required",
+        "optional",
+        "none"
+      ],
+      "markdownDescription": "\n\n---\n\nRequired: No  \nType: String  \nAllowed Values: required | optional | none  \nUpdate requires: No interruption"
+    },
     "SectionalElement": {
       "type": "object",
       "properties": {
@@ -372,6 +423,15 @@
       },
       "additionalProperties": false,
       "markdownDescription": "\n\n---\n\nRequired: No  \nUpdate requires: No interruption"
+    },
+    "StorageAccessLevel": {
+      "type": "string",
+      "enum": [
+        "public",
+        "protected",
+        "private"
+      ],
+      "markdownDescription": "\n\n---\n\nRequired: No  \nType: String  \nAllowed Values: public | protected | private  \nUpdate requires: No interruption"
     },
     "Tags": {
       "type": "object",
@@ -440,6 +500,9 @@
     },
     "FormActionType": {
       "$ref": "#/definitions/FormActionType"
+    },
+    "LabelDecorator": {
+      "$ref": "#/definitions/LabelDecorator"
     },
     "Name": {
       "type": "string",
@@ -510,7 +573,21 @@
       "permissions": [
         "amplify:GetApp",
         "amplifyuibuilder:ListForms"
-      ]
+      ],
+      "handlerSchema": {
+        "properties": {
+          "AppId": {
+            "$ref": "resource-schema.json#/properties/AppId"
+          },
+          "EnvironmentName": {
+            "$ref": "resource-schema.json#/properties/EnvironmentName"
+          }
+        },
+        "required": [
+          "AppId",
+          "EnvironmentName"
+        ]
+      }
     }
   },
   "tagging": {

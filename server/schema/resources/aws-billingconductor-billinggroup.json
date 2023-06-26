@@ -137,7 +137,9 @@
       "permissions": [
         "billingconductor:CreateBillingGroup",
         "billingconductor:AssociateAccounts",
-        "billingconductor:ListBillingGroups"
+        "billingconductor:ListBillingGroups",
+        "billingconductor:TagResource",
+        "billingconductor:ListTagsForResource"
       ]
     },
     "read": {
@@ -171,7 +173,8 @@
     "delete": {
       "permissions": [
         "billingconductor:DeleteBillingGroup",
-        "billingconductor:ListBillingGroups"
+        "billingconductor:ListBillingGroups",
+        "billingconductor:UntagResource"
       ]
     }
   },

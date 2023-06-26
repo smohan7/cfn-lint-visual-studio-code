@@ -184,12 +184,15 @@
       "permissions": [
         "billingconductor:CreateCustomLineItem",
         "billingconductor:BatchAssociateResourcesToCustomLineItem",
-        "billingconductor:ListCustomLineItems"
+        "billingconductor:ListCustomLineItems",
+        "billingconductor:TagResource",
+        "billingconductor:ListTagsForResource"
       ]
     },
     "read": {
       "permissions": [
         "billingconductor:ListCustomLineItems",
+        "billingconductor:ListCustomLineItemVersions",
         "billingconductor:ListResourcesAssociatedToCustomLineItem",
         "billingconductor:ListTagsForResource"
       ]
@@ -215,8 +218,10 @@
     "delete": {
       "permissions": [
         "billingconductor:DeleteCustomLineItem",
+        "billingconductor:ListCustomLineItems",
         "billingconductor:BatchDisassociateResourcesFromCustomLineItem",
-        "billingconductor:ListResourcesAssociatedToCustomLineItem"
+        "billingconductor:ListResourcesAssociatedToCustomLineItem",
+        "billingconductor:UntagResource"
       ]
     }
   },

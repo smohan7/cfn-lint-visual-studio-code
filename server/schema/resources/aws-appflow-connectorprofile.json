@@ -545,6 +545,16 @@
           "description": "The client credentials to fetch access token and refresh token.",
           "$ref": "#/definitions/ClientCredentialsArn",
           "markdownDescription": "The client credentials to fetch access token and refresh token.\n\n---\n\nRequired: No  \nType:   \nUpdate requires: No interruption"
+        },
+        "OAuth2GrantType": {
+          "description": "The grant types to fetch an access token",
+          "$ref": "#/definitions/OAuth2GrantType",
+          "markdownDescription": "The grant types to fetch an access token\n\n---\n\nRequired: No  \nType:   \nUpdate requires: No interruption"
+        },
+        "JwtToken": {
+          "description": "The credentials used to access your Salesforce records",
+          "$ref": "#/definitions/JwtToken",
+          "markdownDescription": "The credentials used to access your Salesforce records\n\n---\n\nRequired: No  \nType:   \nUpdate requires: No interruption"
         }
       },
       "markdownDescription": "\n\n---\n\nRequired: No  \nUpdate requires: No interruption"
@@ -1044,9 +1054,10 @@
       "type": "string",
       "enum": [
         "CLIENT_CREDENTIALS",
-        "AUTHORIZATION_CODE"
+        "AUTHORIZATION_CODE",
+        "JWT_BEARER"
       ],
-      "markdownDescription": "\n\n---\n\nRequired: No  \nType: String  \nAllowed Values: CLIENT_CREDENTIALS | AUTHORIZATION_CODE  \nUpdate requires: No interruption"
+      "markdownDescription": "\n\n---\n\nRequired: No  \nType: String  \nAllowed Values: CLIENT_CREDENTIALS | AUTHORIZATION_CODE | JWT_BEARER  \nUpdate requires: No interruption"
     },
     "TokenUrlCustomProperties": {
       "description": "A map for properties for custom connector Token Url.",
@@ -1179,6 +1190,11 @@
       "type": "string",
       "maxLength": 512,
       "markdownDescription": "\n\n---\n\nRequired: No  \nType: String  \nMaximum Length: 512  \nPattern: \\S+  \nUpdate requires: No interruption"
+    },
+    "JwtToken": {
+      "type": "string",
+      "maxLength": 8000,
+      "markdownDescription": "\n\n---\n\nRequired: No  \nType: String  \nMaximum Length: 8000  \nPattern: ^[A-Za-z0-9-_=]+\\.[A-Za-z0-9-_=]+\\.[A-Za-z0-9-_.+/=]*$  \nUpdate requires: No interruption"
     },
     "RefreshToken": {
       "type": "string",

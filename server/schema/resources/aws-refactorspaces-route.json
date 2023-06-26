@@ -51,7 +51,7 @@
           "type": "string",
           "maxLength": 2048,
           "minLength": 1,
-          "markdownDescription": "\n\n---\n\nRequired: No  \nType: String  \nMinimum Length: 1  \nMaximum Length: 2048  \nPattern: ^(/[a-zA-Z0-9._-]+)+$  \nUpdate requires: No interruption"
+          "markdownDescription": "\n\n---\n\nRequired: No  \nType: String  \nMinimum Length: 1  \nMaximum Length: 2048  \nPattern: ^(/([a-zA-Z0-9._:-]+|\\{[a-zA-Z0-9._:-]+\\}))+$  \nUpdate requires: No interruption"
         },
         "ActivationState": {
           "$ref": "#/definitions/RouteActivationState"
@@ -65,6 +65,10 @@
           "markdownDescription": "\n\n---\n\nRequired: No  \nType: Array  \nUpdate requires: No interruption"
         },
         "IncludeChildPaths": {
+          "type": "boolean",
+          "markdownDescription": "\n\n---\n\nRequired: No  \nType: Boolean  \nUpdate requires: No interruption"
+        },
+        "AppendSourcePath": {
           "type": "boolean",
           "markdownDescription": "\n\n---\n\nRequired: No  \nType: Boolean  \nUpdate requires: No interruption"
         }
@@ -164,7 +168,8 @@
     "/properties/ServiceIdentifier",
     "/properties/UriPathRoute/SourcePath",
     "/properties/UriPathRoute/Methods",
-    "/properties/UriPathRoute/IncludeChildPaths"
+    "/properties/UriPathRoute/IncludeChildPaths",
+    "/properties/UriPathRoute/AppendSourcePath"
   ],
   "primaryIdentifier": [
     "/properties/EnvironmentIdentifier",

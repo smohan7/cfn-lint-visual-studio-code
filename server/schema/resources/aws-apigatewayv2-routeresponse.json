@@ -8,8 +8,7 @@
       "markdownDescription": "\n\n---\n\nRequired: Yes  \nType: String  \nUpdate requires: No interruption"
     },
     "ResponseParameters": {
-      "type": "object",
-      "markdownDescription": "\n\n---\n\nRequired: No  \nUpdate requires: No interruption"
+      "$ref": "#/definitions/RouteParameters"
     },
     "RouteId": {
       "type": "string",
@@ -28,6 +27,30 @@
       "markdownDescription": "\n\n---\n\nRequired: No  \nUpdate requires: No interruption"
     }
   },
+  "definitions": {
+    "ParameterConstraints": {
+      "type": "object",
+      "properties": {
+        "Required": {
+          "type": "boolean",
+          "markdownDescription": "\n\n---\n\nRequired: Yes  \nType: Boolean  \nUpdate requires: No interruption"
+        }
+      },
+      "required": [
+        "Required"
+      ],
+      "additionalProperties": false,
+      "markdownDescription": "\n\n---\n\nRequired: No  \nUpdate requires: No interruption"
+    },
+    "RouteParameters": {
+      "patternProperties": {
+        "^.+$": {
+          "$ref": "#/definitions/ParameterConstraints"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
   "required": [
     "RouteResponseKey",
     "RouteId",
@@ -37,14 +60,52 @@
     "/properties/ApiId",
     "/properties/RouteId"
   ],
-  "primaryIdentifier": [
-    "/properties/Id"
-  ],
   "readOnlyProperties": [
-    "/properties/Id"
+    "/properties/RouteResponseId"
   ],
+  "primaryIdentifier": [
+    "/properties/ApiId",
+    "/properties/RouteId",
+    "/properties/RouteResponseId"
+  ],
+  "tagging": {
+    "taggable": false,
+    "tagOnCreate": false,
+    "tagUpdatable": false,
+    "cloudFormationSystemTags": false
+  },
+  "handlers": {
+    "create": {
+      "permissions": [
+        "apigateway:POST"
+      ]
+    },
+    "update": {
+      "permissions": [
+        "apigateway:PATCH",
+        "apigateway:GET",
+        "apigateway:PUT"
+      ]
+    },
+    "read": {
+      "permissions": [
+        "apigateway:GET"
+      ]
+    },
+    "delete": {
+      "permissions": [
+        "apigateway:GET",
+        "apigateway:DELETE"
+      ]
+    },
+    "list": {
+      "permissions": [
+        "apigateway:GET"
+      ]
+    }
+  },
   "attributes": {
-    "Id": {
+    "RouteResponseId": {
       "type": "string",
       "markdownDescription": "\n\n---\n\nRequired: No  \nType: String  \nUpdate requires: No interruption"
     }

@@ -25,6 +25,9 @@
     "Vpc": {
       "$ref": "#/definitions/VpcOutputSettings"
     },
+    "Maintenance": {
+      "$ref": "#/definitions/MaintenanceCreateSettings"
+    },
     "LogLevel": {
       "type": "string",
       "markdownDescription": "\n\n---\n\nRequired: No  \nType: String  \nUpdate requires: No interruption"
@@ -139,6 +142,17 @@
       },
       "markdownDescription": "\n\n---\n\nRequired: No  \nUpdate requires: No interruption"
     },
+    "AudioDolbyEDecode": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "ProgramSelection": {
+          "type": "string",
+          "markdownDescription": "\n\n---\n\nRequired: No  \nType: String  \nUpdate requires: No interruption"
+        }
+      },
+      "markdownDescription": "\n\n---\n\nRequired: No  \nUpdate requires: No interruption"
+    },
     "AudioCodecSettings": {
       "type": "object",
       "additionalProperties": false,
@@ -151,6 +165,9 @@
         },
         "Mp2Settings": {
           "$ref": "#/definitions/Mp2Settings"
+        },
+        "Eac3AtmosSettings": {
+          "$ref": "#/definitions/Eac3AtmosSettings"
         },
         "PassThroughSettings": {
           "$ref": "#/definitions/PassThroughSettings"
@@ -203,6 +220,9 @@
       "type": "object",
       "additionalProperties": false,
       "properties": {
+        "TimecodeBurninSettings": {
+          "$ref": "#/definitions/TimecodeBurninSettings"
+        },
         "NumRefFrames": {
           "type": "integer",
           "markdownDescription": "\n\n---\n\nRequired: No  \nType: Integer  \nUpdate requires: No interruption"
@@ -559,6 +579,9 @@
       "type": "object",
       "additionalProperties": false,
       "properties": {
+        "DolbyEDecode": {
+          "$ref": "#/definitions/AudioDolbyEDecode"
+        },
         "Tracks": {
           "type": "array",
           "uniqueItems": false,
@@ -765,6 +788,9 @@
         },
         "Scte35TimeSignalApos": {
           "$ref": "#/definitions/Scte35TimeSignalApos"
+        },
+        "Esam": {
+          "$ref": "#/definitions/Esam"
         }
       },
       "markdownDescription": "\n\n---\n\nRequired: No  \nUpdate requires: No interruption"
@@ -1146,13 +1172,16 @@
       "type": "object",
       "additionalProperties": false,
       "properties": {
-        "CaptureInterval": {
-          "type": "integer",
-          "markdownDescription": "\n\n---\n\nRequired: No  \nType: Integer  \nUpdate requires: No interruption"
+        "TimecodeBurninSettings": {
+          "$ref": "#/definitions/TimecodeBurninSettings"
         },
         "CaptureIntervalUnits": {
           "type": "string",
           "markdownDescription": "\n\n---\n\nRequired: No  \nType: String  \nUpdate requires: No interruption"
+        },
+        "CaptureInterval": {
+          "type": "integer",
+          "markdownDescription": "\n\n---\n\nRequired: No  \nType: Integer  \nUpdate requires: No interruption"
         }
       },
       "markdownDescription": "\n\n---\n\nRequired: No  \nUpdate requires: No interruption"
@@ -1162,6 +1191,52 @@
       "additionalProperties": false,
       "properties": {
         "Resolution": {
+          "type": "string",
+          "markdownDescription": "\n\n---\n\nRequired: No  \nType: String  \nUpdate requires: No interruption"
+        }
+      },
+      "markdownDescription": "\n\n---\n\nRequired: No  \nUpdate requires: No interruption"
+    },
+    "Esam": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "AdAvailOffset": {
+          "type": "integer",
+          "markdownDescription": "\n\n---\n\nRequired: No  \nType: Integer  \nUpdate requires: No interruption"
+        },
+        "ZoneIdentity": {
+          "type": "string",
+          "markdownDescription": "\n\n---\n\nRequired: No  \nType: String  \nUpdate requires: No interruption"
+        },
+        "AcquisitionPointId": {
+          "type": "string",
+          "markdownDescription": "\n\n---\n\nRequired: No  \nType: String  \nUpdate requires: No interruption"
+        },
+        "PoisEndpoint": {
+          "type": "string",
+          "markdownDescription": "\n\n---\n\nRequired: No  \nType: String  \nUpdate requires: No interruption"
+        },
+        "Username": {
+          "type": "string",
+          "markdownDescription": "\n\n---\n\nRequired: No  \nType: String  \nUpdate requires: No interruption"
+        },
+        "PasswordParam": {
+          "type": "string",
+          "markdownDescription": "\n\n---\n\nRequired: No  \nType: String  \nUpdate requires: No interruption"
+        }
+      },
+      "markdownDescription": "\n\n---\n\nRequired: No  \nUpdate requires: No interruption"
+    },
+    "MaintenanceCreateSettings": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "MaintenanceDay": {
+          "type": "string",
+          "markdownDescription": "\n\n---\n\nRequired: No  \nType: String  \nUpdate requires: No interruption"
+        },
+        "MaintenanceStartTime": {
           "type": "string",
           "markdownDescription": "\n\n---\n\nRequired: No  \nType: String  \nUpdate requires: No interruption"
         }
@@ -1293,6 +1368,9 @@
         },
         "ColorSpacePassthroughSettings": {
           "$ref": "#/definitions/ColorSpacePassthroughSettings"
+        },
+        "DolbyVision81Settings": {
+          "$ref": "#/definitions/DolbyVision81Settings"
         },
         "Hdr10Settings": {
           "$ref": "#/definitions/Hdr10Settings"
@@ -1613,6 +1691,89 @@
           "type": "string",
           "markdownDescription": "\n\n---\n\nRequired: No  \nType: String  \nUpdate requires: No interruption"
         },
+        "AribCaptionsPid": {
+          "type": "string",
+          "markdownDescription": "\n\n---\n\nRequired: No  \nType: String  \nUpdate requires: No interruption"
+        },
+        "EbpPlacement": {
+          "type": "string",
+          "markdownDescription": "\n\n---\n\nRequired: No  \nType: String  \nUpdate requires: No interruption"
+        },
+        "DvbSubPids": {
+          "type": "string",
+          "markdownDescription": "\n\n---\n\nRequired: No  \nType: String  \nUpdate requires: No interruption"
+        },
+        "SegmentationStyle": {
+          "type": "string",
+          "markdownDescription": "\n\n---\n\nRequired: No  \nType: String  \nUpdate requires: No interruption"
+        },
+        "Klv": {
+          "type": "string",
+          "markdownDescription": "\n\n---\n\nRequired: No  \nType: String  \nUpdate requires: No interruption"
+        },
+        "Scte35PrerollPullupMilliseconds": {
+          "type": "number",
+          "markdownDescription": "\n\n---\n\nRequired: No  \nType: Number  \nUpdate requires: No interruption"
+        },
+        "TimedMetadataBehavior": {
+          "type": "string",
+          "markdownDescription": "\n\n---\n\nRequired: No  \nType: String  \nUpdate requires: No interruption"
+        },
+        "DvbTeletextPid": {
+          "type": "string",
+          "markdownDescription": "\n\n---\n\nRequired: No  \nType: String  \nUpdate requires: No interruption"
+        },
+        "Scte35Control": {
+          "type": "string",
+          "markdownDescription": "\n\n---\n\nRequired: No  \nType: String  \nUpdate requires: No interruption"
+        },
+        "PcrPeriod": {
+          "type": "integer",
+          "markdownDescription": "\n\n---\n\nRequired: No  \nType: Integer  \nUpdate requires: No interruption"
+        },
+        "SegmentationTime": {
+          "type": "number",
+          "markdownDescription": "\n\n---\n\nRequired: No  \nType: Number  \nUpdate requires: No interruption"
+        },
+        "CcDescriptor": {
+          "type": "string",
+          "markdownDescription": "\n\n---\n\nRequired: No  \nType: String  \nUpdate requires: No interruption"
+        },
+        "PmtPid": {
+          "type": "string",
+          "markdownDescription": "\n\n---\n\nRequired: No  \nType: String  \nUpdate requires: No interruption"
+        },
+        "DvbNitSettings": {
+          "$ref": "#/definitions/DvbNitSettings"
+        },
+        "EtvSignalPid": {
+          "type": "string",
+          "markdownDescription": "\n\n---\n\nRequired: No  \nType: String  \nUpdate requires: No interruption"
+        },
+        "Arib": {
+          "type": "string",
+          "markdownDescription": "\n\n---\n\nRequired: No  \nType: String  \nUpdate requires: No interruption"
+        },
+        "TimedMetadataPid": {
+          "type": "string",
+          "markdownDescription": "\n\n---\n\nRequired: No  \nType: String  \nUpdate requires: No interruption"
+        },
+        "AudioPids": {
+          "type": "string",
+          "markdownDescription": "\n\n---\n\nRequired: No  \nType: String  \nUpdate requires: No interruption"
+        },
+        "AudioBufferModel": {
+          "type": "string",
+          "markdownDescription": "\n\n---\n\nRequired: No  \nType: String  \nUpdate requires: No interruption"
+        },
+        "Ebif": {
+          "type": "string",
+          "markdownDescription": "\n\n---\n\nRequired: No  \nType: String  \nUpdate requires: No interruption"
+        },
+        "PcrControl": {
+          "type": "string",
+          "markdownDescription": "\n\n---\n\nRequired: No  \nType: String  \nUpdate requires: No interruption"
+        },
         "PatInterval": {
           "type": "integer",
           "markdownDescription": "\n\n---\n\nRequired: No  \nType: Integer  \nUpdate requires: No interruption"
@@ -1637,10 +1798,6 @@
           "type": "integer",
           "markdownDescription": "\n\n---\n\nRequired: No  \nType: Integer  \nUpdate requires: No interruption"
         },
-        "AribCaptionsPid": {
-          "type": "string",
-          "markdownDescription": "\n\n---\n\nRequired: No  \nType: String  \nUpdate requires: No interruption"
-        },
         "EsRateInPes": {
           "type": "string",
           "markdownDescription": "\n\n---\n\nRequired: No  \nType: String  \nUpdate requires: No interruption"
@@ -1653,27 +1810,11 @@
           "type": "integer",
           "markdownDescription": "\n\n---\n\nRequired: No  \nType: Integer  \nUpdate requires: No interruption"
         },
-        "EbpPlacement": {
-          "type": "string",
-          "markdownDescription": "\n\n---\n\nRequired: No  \nType: String  \nUpdate requires: No interruption"
-        },
-        "DvbSubPids": {
-          "type": "string",
-          "markdownDescription": "\n\n---\n\nRequired: No  \nType: String  \nUpdate requires: No interruption"
-        },
-        "SegmentationStyle": {
-          "type": "string",
-          "markdownDescription": "\n\n---\n\nRequired: No  \nType: String  \nUpdate requires: No interruption"
-        },
         "Scte35Pid": {
           "type": "string",
           "markdownDescription": "\n\n---\n\nRequired: No  \nType: String  \nUpdate requires: No interruption"
         },
         "AudioStreamType": {
-          "type": "string",
-          "markdownDescription": "\n\n---\n\nRequired: No  \nType: String  \nUpdate requires: No interruption"
-        },
-        "Klv": {
           "type": "string",
           "markdownDescription": "\n\n---\n\nRequired: No  \nType: String  \nUpdate requires: No interruption"
         },
@@ -1684,10 +1825,6 @@
         "DvbTdtSettings": {
           "$ref": "#/definitions/DvbTdtSettings"
         },
-        "TimedMetadataBehavior": {
-          "type": "string",
-          "markdownDescription": "\n\n---\n\nRequired: No  \nType: String  \nUpdate requires: No interruption"
-        },
         "EbpAudioInterval": {
           "type": "string",
           "markdownDescription": "\n\n---\n\nRequired: No  \nType: String  \nUpdate requires: No interruption"
@@ -1696,31 +1833,11 @@
           "type": "number",
           "markdownDescription": "\n\n---\n\nRequired: No  \nType: Number  \nUpdate requires: No interruption"
         },
-        "DvbTeletextPid": {
-          "type": "string",
-          "markdownDescription": "\n\n---\n\nRequired: No  \nType: String  \nUpdate requires: No interruption"
-        },
-        "Scte35Control": {
-          "type": "string",
-          "markdownDescription": "\n\n---\n\nRequired: No  \nType: String  \nUpdate requires: No interruption"
-        },
-        "PcrPeriod": {
-          "type": "integer",
-          "markdownDescription": "\n\n---\n\nRequired: No  \nType: Integer  \nUpdate requires: No interruption"
-        },
         "NielsenId3Behavior": {
           "type": "string",
           "markdownDescription": "\n\n---\n\nRequired: No  \nType: String  \nUpdate requires: No interruption"
         },
         "PcrPid": {
-          "type": "string",
-          "markdownDescription": "\n\n---\n\nRequired: No  \nType: String  \nUpdate requires: No interruption"
-        },
-        "SegmentationTime": {
-          "type": "number",
-          "markdownDescription": "\n\n---\n\nRequired: No  \nType: Number  \nUpdate requires: No interruption"
-        },
-        "CcDescriptor": {
           "type": "string",
           "markdownDescription": "\n\n---\n\nRequired: No  \nType: String  \nUpdate requires: No interruption"
         },
@@ -1736,10 +1853,6 @@
           "type": "integer",
           "markdownDescription": "\n\n---\n\nRequired: No  \nType: Integer  \nUpdate requires: No interruption"
         },
-        "PmtPid": {
-          "type": "string",
-          "markdownDescription": "\n\n---\n\nRequired: No  \nType: String  \nUpdate requires: No interruption"
-        },
         "Scte27Pids": {
           "type": "string",
           "markdownDescription": "\n\n---\n\nRequired: No  \nType: String  \nUpdate requires: No interruption"
@@ -1748,19 +1861,8 @@
           "type": "string",
           "markdownDescription": "\n\n---\n\nRequired: No  \nType: String  \nUpdate requires: No interruption"
         },
-        "DvbNitSettings": {
-          "$ref": "#/definitions/DvbNitSettings"
-        },
         "DvbSdtSettings": {
           "$ref": "#/definitions/DvbSdtSettings"
-        },
-        "EtvSignalPid": {
-          "type": "string",
-          "markdownDescription": "\n\n---\n\nRequired: No  \nType: String  \nUpdate requires: No interruption"
-        },
-        "Arib": {
-          "type": "string",
-          "markdownDescription": "\n\n---\n\nRequired: No  \nType: String  \nUpdate requires: No interruption"
         },
         "BufferModel": {
           "type": "string",
@@ -1770,31 +1872,16 @@
           "type": "string",
           "markdownDescription": "\n\n---\n\nRequired: No  \nType: String  \nUpdate requires: No interruption"
         },
-        "TimedMetadataPid": {
-          "type": "string",
-          "markdownDescription": "\n\n---\n\nRequired: No  \nType: String  \nUpdate requires: No interruption"
-        },
-        "AudioPids": {
-          "type": "string",
-          "markdownDescription": "\n\n---\n\nRequired: No  \nType: String  \nUpdate requires: No interruption"
-        },
-        "AudioBufferModel": {
-          "type": "string",
-          "markdownDescription": "\n\n---\n\nRequired: No  \nType: String  \nUpdate requires: No interruption"
-        },
-        "Ebif": {
-          "type": "string",
-          "markdownDescription": "\n\n---\n\nRequired: No  \nType: String  \nUpdate requires: No interruption"
-        },
         "AribCaptionsPidControl": {
-          "type": "string",
-          "markdownDescription": "\n\n---\n\nRequired: No  \nType: String  \nUpdate requires: No interruption"
-        },
-        "PcrControl": {
           "type": "string",
           "markdownDescription": "\n\n---\n\nRequired: No  \nType: String  \nUpdate requires: No interruption"
         }
       },
+      "markdownDescription": "\n\n---\n\nRequired: No  \nUpdate requires: No interruption"
+    },
+    "DolbyVision81Settings": {
+      "type": "object",
+      "additionalProperties": false,
       "markdownDescription": "\n\n---\n\nRequired: No  \nUpdate requires: No interruption"
     },
     "HlsGroupSettings": {
@@ -2199,6 +2286,41 @@
     "PassThroughSettings": {
       "type": "object",
       "additionalProperties": false,
+      "markdownDescription": "\n\n---\n\nRequired: No  \nUpdate requires: No interruption"
+    },
+    "Eac3AtmosSettings": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "CodingMode": {
+          "type": "string",
+          "markdownDescription": "\n\n---\n\nRequired: No  \nType: String  \nUpdate requires: No interruption"
+        },
+        "Dialnorm": {
+          "type": "integer",
+          "markdownDescription": "\n\n---\n\nRequired: No  \nType: Integer  \nUpdate requires: No interruption"
+        },
+        "SurroundTrim": {
+          "type": "number",
+          "markdownDescription": "\n\n---\n\nRequired: No  \nType: Number  \nUpdate requires: No interruption"
+        },
+        "DrcRf": {
+          "type": "string",
+          "markdownDescription": "\n\n---\n\nRequired: No  \nType: String  \nUpdate requires: No interruption"
+        },
+        "Bitrate": {
+          "type": "number",
+          "markdownDescription": "\n\n---\n\nRequired: No  \nType: Number  \nUpdate requires: No interruption"
+        },
+        "DrcLine": {
+          "type": "string",
+          "markdownDescription": "\n\n---\n\nRequired: No  \nType: String  \nUpdate requires: No interruption"
+        },
+        "HeightTrim": {
+          "type": "number",
+          "markdownDescription": "\n\n---\n\nRequired: No  \nType: Number  \nUpdate requires: No interruption"
+        }
+      },
       "markdownDescription": "\n\n---\n\nRequired: No  \nUpdate requires: No interruption"
     },
     "InputLossFailoverSettings": {
@@ -2625,6 +2747,25 @@
       },
       "markdownDescription": "\n\n---\n\nRequired: No  \nUpdate requires: No interruption"
     },
+    "TimecodeBurninSettings": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "Prefix": {
+          "type": "string",
+          "markdownDescription": "\n\n---\n\nRequired: No  \nType: String  \nUpdate requires: No interruption"
+        },
+        "FontSize": {
+          "type": "string",
+          "markdownDescription": "\n\n---\n\nRequired: No  \nType: String  \nUpdate requires: No interruption"
+        },
+        "Position": {
+          "type": "string",
+          "markdownDescription": "\n\n---\n\nRequired: No  \nType: String  \nUpdate requires: No interruption"
+        }
+      },
+      "markdownDescription": "\n\n---\n\nRequired: No  \nUpdate requires: No interruption"
+    },
     "AudioSelector": {
       "type": "object",
       "additionalProperties": false,
@@ -2690,6 +2831,9 @@
       "type": "object",
       "additionalProperties": false,
       "properties": {
+        "TimecodeBurninSettings": {
+          "$ref": "#/definitions/TimecodeBurninSettings"
+        },
         "Slices": {
           "type": "integer",
           "markdownDescription": "\n\n---\n\nRequired: No  \nType: Integer  \nUpdate requires: No interruption"
@@ -2946,15 +3090,19 @@
         "DestinationSettings": {
           "$ref": "#/definitions/CaptionDestinationSettings"
         },
-        "CaptionSelectorName": {
-          "type": "string",
-          "markdownDescription": "\n\n---\n\nRequired: No  \nType: String  \nUpdate requires: No interruption"
-        },
         "LanguageCode": {
           "type": "string",
           "markdownDescription": "\n\n---\n\nRequired: No  \nType: String  \nUpdate requires: No interruption"
         },
         "LanguageDescription": {
+          "type": "string",
+          "markdownDescription": "\n\n---\n\nRequired: No  \nType: String  \nUpdate requires: No interruption"
+        },
+        "Accessibility": {
+          "type": "string",
+          "markdownDescription": "\n\n---\n\nRequired: No  \nType: String  \nUpdate requires: No interruption"
+        },
+        "CaptionSelectorName": {
           "type": "string",
           "markdownDescription": "\n\n---\n\nRequired: No  \nType: String  \nUpdate requires: No interruption"
         },
@@ -3043,6 +3191,9 @@
       "type": "object",
       "additionalProperties": false,
       "properties": {
+        "TimecodeBurninSettings": {
+          "$ref": "#/definitions/TimecodeBurninSettings"
+        },
         "ColorSpace": {
           "type": "string",
           "markdownDescription": "\n\n---\n\nRequired: No  \nType: String  \nUpdate requires: No interruption"
@@ -3600,6 +3751,10 @@
       "type": "object",
       "additionalProperties": false,
       "properties": {
+        "Timezone": {
+          "type": "string",
+          "markdownDescription": "\n\n---\n\nRequired: No  \nType: String  \nUpdate requires: No interruption"
+        },
         "CheckDigitString": {
           "type": "string",
           "markdownDescription": "\n\n---\n\nRequired: No  \nType: String  \nUpdate requires: No interruption"

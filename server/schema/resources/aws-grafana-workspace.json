@@ -330,6 +330,13 @@
       "description": "A unique, case-sensitive, user-provided identifier to ensure the idempotency of the request.",
       "markdownDescription": "A unique, case-sensitive, user-provided identifier to ensure the idempotency of the request.\n\n---\n\nRequired: No  \nType: String  \nPattern: ^[!-~]{1,64}$  \nUpdate requires: Replacement"
     },
+    "GrafanaVersion": {
+      "type": "string",
+      "maxLength": 255,
+      "minLength": 1,
+      "description": "The version of Grafana to support in your workspace. For region ap-northeast-2, only version 8.4 is supported.",
+      "markdownDescription": "The version of Grafana to support in your workspace. For region ap-northeast-2, only version 8.4 is supported.\n\n---\n\nRequired: No  \nType: String  \nMinimum Length: 1  \nMaximum Length: 255  \nUpdate requires: No interruption"
+    },
     "AccountAccessType": {
       "$ref": "#/definitions/AccountAccessType"
     },
@@ -408,7 +415,6 @@
     "/properties/SamlConfigurationStatus",
     "/properties/Endpoint",
     "/properties/Status",
-    "/properties/GrafanaVersion",
     "/properties/CreationTimestamp",
     "/properties/ModificationTimestamp"
   ],
@@ -506,13 +512,6 @@
       "description": "Timestamp when the workspace was last modified",
       "format": "date-time",
       "markdownDescription": "Timestamp when the workspace was last modified\n\n---\n\nRequired: No  \nType: String  \nUpdate requires: No interruption"
-    },
-    "GrafanaVersion": {
-      "type": "string",
-      "maxLength": 255,
-      "minLength": 1,
-      "description": "Version of Grafana the workspace is currently using.",
-      "markdownDescription": "Version of Grafana the workspace is currently using.\n\n---\n\nRequired: No  \nType: String  \nMinimum Length: 1  \nMaximum Length: 255  \nUpdate requires: No interruption"
     },
     "Endpoint": {
       "type": "string",

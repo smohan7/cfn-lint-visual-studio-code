@@ -27,7 +27,16 @@
     "TriggerConfig": {
       "description": "Trigger settings of the flow.",
       "$ref": "#/definitions/TriggerConfig",
-      "markdownDescription": "Trigger settings of the flow.\n\n---\n\nRequired: Yes  \nType:   \nUpdate requires: Replacement"
+      "markdownDescription": "Trigger settings of the flow.\n\n---\n\nRequired: Yes  \nType:   \nUpdate requires: No interruption"
+    },
+    "FlowStatus": {
+      "description": "Flow activation status for Scheduled- and Event-triggered flows",
+      "type": "string",
+      "enum": [
+        "Active",
+        "Suspended"
+      ],
+      "markdownDescription": "Flow activation status for Scheduled- and Event-triggered flows\n\n---\n\nRequired: No  \nType: String  \nAllowed Values: Active | Suspended  \nUpdate requires: No interruption"
     },
     "SourceFlowConfig": {
       "description": "Configurations of Source connector of the flow.",
@@ -78,18 +87,13 @@
           "description": "Details required based on the type of trigger",
           "$ref": "#/definitions/ScheduledTriggerProperties",
           "markdownDescription": "Details required based on the type of trigger\n\n---\n\nRequired: No  \nType:   \nUpdate requires: No interruption"
-        },
-        "ActivateFlowOnCreate": {
-          "description": "Active 'Scheduled' or 'Event' flow after creation. Without activation the default state of such flows upon creation is DRAFT.",
-          "type": "boolean",
-          "markdownDescription": "Active 'Scheduled' or 'Event' flow after creation. Without activation the default state of such flows upon creation is DRAFT.\n\n---\n\nRequired: No  \nType: Boolean  \nUpdate requires: No interruption"
         }
       },
       "required": [
         "TriggerType"
       ],
       "additionalProperties": false,
-      "markdownDescription": "Trigger settings of the flow.\n\n---\n\nRequired: No  \nUpdate requires: Replacement"
+      "markdownDescription": "Trigger settings of the flow.\n\n---\n\nRequired: No  \nUpdate requires: No interruption"
     },
     "SourceFlowConfig": {
       "description": "Configurations of Source connector of the flow.",
@@ -1755,8 +1759,7 @@
   ],
   "createOnlyProperties": [
     "/properties/FlowName",
-    "/properties/KMSArn",
-    "/properties/TriggerConfig/ActivateFlowOnCreate"
+    "/properties/KMSArn"
   ],
   "readOnlyProperties": [
     "/properties/FlowArn"
@@ -1794,6 +1797,8 @@
     "update": {
       "permissions": [
         "appflow:UpdateFlow",
+        "appflow:StartFlow",
+        "appflow:StopFlow",
         "appflow:TagResource",
         "appflow:UntagResource",
         "appflow:ListTagsForResource",

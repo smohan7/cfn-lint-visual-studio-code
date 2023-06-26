@@ -58,13 +58,17 @@
         },
         "MappingType": {
           "type": "string",
-          "markdownDescription": "\n\n---\n\nRequired: Yes  \nType: String  \nPattern: CfnStack|Resource|Terraform  \nUpdate requires: No interruption"
+          "markdownDescription": "\n\n---\n\nRequired: Yes  \nType: String  \nPattern: CfnStack|Resource|Terraform|EKS  \nUpdate requires: No interruption"
         },
         "ResourceName": {
           "type": "string",
           "markdownDescription": "\n\n---\n\nRequired: No  \nType: String  \nPattern: ^[A-Za-z0-9][A-Za-z0-9_\\-]{1,59}$  \nUpdate requires: No interruption"
         },
         "TerraformSourceName": {
+          "type": "string",
+          "markdownDescription": "\n\n---\n\nRequired: No  \nType: String  \nUpdate requires: No interruption"
+        },
+        "EksSourceName": {
           "type": "string",
           "markdownDescription": "\n\n---\n\nRequired: No  \nType: String  \nUpdate requires: No interruption"
         },
@@ -105,7 +109,7 @@
       "type": "string",
       "minLength": 0,
       "maxLength": 5000,
-      "markdownDescription": "A string containing full ResilienceHub app template body.\n\n---\n\nRequired: Yes  \nType: String  \nMaximum Length: 5000  \nPattern: ^[\\w\\s:,-\\.'{}\\[\\]:\"]+$  \nUpdate requires: No interruption"
+      "markdownDescription": "A string containing full ResilienceHub app template body.\n\n---\n\nRequired: Yes  \nType: String  \nMaximum Length: 5000  \nPattern: ^[\\w\\s:,-\\.'\\/{}\\[\\]:\"]+$  \nUpdate requires: No interruption"
     },
     "ResourceMappings": {
       "description": "An array of ResourceMapping objects.",
@@ -161,6 +165,7 @@
         "apigateway:GET",
         "ec2:Describe*",
         "ecs:DescribeServices",
+        "eks:DescribeCluster",
         "elasticfilesystem:DescribeFileSystems",
         "elasticloadbalancing:DescribeLoadBalancers",
         "lambda:GetFunction",
@@ -191,6 +196,7 @@
         "apigateway:GET",
         "ec2:Describe*",
         "ecs:DescribeServices",
+        "eks:DescribeCluster",
         "elasticfilesystem:DescribeFileSystems",
         "elasticloadbalancing:DescribeLoadBalancers",
         "lambda:GetFunction",
